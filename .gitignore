@@ -6,6 +6,11 @@
 *.exe
 *.o
 *.so
+*.idea
+target
+*.iml
+*.ipr
+*.log
 
 # Packages #
 ############
