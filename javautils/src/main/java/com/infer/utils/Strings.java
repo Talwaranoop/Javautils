@@ -86,15 +86,15 @@ public class Strings {
      * @param start      This parameter has been used to declare the starting point
      *                   from which the string will be UpperCased.
      * @param len        This parameter has been used to declare the length up to
-     *                   which the string will be LowerCased.
+     *                   which the string will be UpperCased.
      */
     public static void toUpperCase(byte[] byteStream, int start, int len) {
         try {
             for (int i = start; i < start + len; i++) {
                 if (byteStream[i] >= 97 && byteStream[i] <= 122) {
                     byteStream[i] = (byte) (byteStream[i] - 32);
-                    /**97 & 122 are ascii codes of byte representing characters lowercase
-                     * letters a & z respectively.
+                    /**97 & 122 are ascii codes of byte representing lowercase
+                     * alphabets a & z respectively.
                      * Where as the '32' also known as Delta is the difference between
                      * an uppercase and a lower case letter.
                      */
