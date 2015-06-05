@@ -53,9 +53,9 @@ public class Strings {
     }
 
     /**
-     * This method converts a string to lower case using Byte.
+     * This method converts a string to lower case using byte.
      *
-     * @param byteStream This para
+     * @param byteStream This is the first parameter and is used to input a string through byte.
      * @param start      This parameter has been used to declare the starting point
      *                   from which the string will be LowerCased.
      * @param len        This parameter has been used to declare the length up to
@@ -80,7 +80,14 @@ public class Strings {
         }
     }
 
-    //convert a string to upper case using Byte
+    /**This method converts a string to upper case using byte.
+     *
+     * @param byteStream This is the first parameter and is used to input a string through byte.
+     * @param start      This parameter has been used to declare the starting point
+     *                   from which the string will be UpperCased.
+     * @param len        This parameter has been used to declare the length up to
+     *                   which the string will be LowerCased.
+     */
     public static void toUpperCase(byte[] byteStream, int start, int len) {
         try {
             for (int i = start; i < start + len; i++) {
@@ -93,6 +100,8 @@ public class Strings {
                      */
                 }
             }
+            /**IndexOutOfBoundException is thrown when the entered value exceeds the last index of the array
+             */
             System.out.println(new String(byteStream));
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
