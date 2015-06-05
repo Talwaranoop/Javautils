@@ -48,7 +48,7 @@ public class Strings {
         try {
             for(int i = start; i < start + len;i++){
                 if(byteStream[i] >= 97 && byteStream[i] <= 122){
-                    byteStream[i] = (byte) (byteStream[i] + 32);
+                    byteStream[i] = (byte) (byteStream[i] - 32);
                 }
             }
             System.out.println(new String(byteStream));
