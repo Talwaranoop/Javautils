@@ -1,7 +1,5 @@
 package com.infer.utils;
 
-import java.io.*;
-
 /**
  * The Strings program implements an application that
  * simply converts a string to uppercase or lowercase
@@ -80,7 +78,8 @@ public class Strings {
         }
     }
 
-    /**This method converts a string to upper case using byte.
+    /**
+     * This method converts a string to upper case using byte.
      *
      * @param byteStream This is the first parameter and is used to input a string through byte.
      * @param start      This parameter has been used to declare the starting point

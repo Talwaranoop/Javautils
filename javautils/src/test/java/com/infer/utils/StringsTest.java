@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static com.infer.utils.Strings.toLowerCase;
 import static com.infer.utils.Strings.toUpperCase;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Anoop on 6/1/2015.
