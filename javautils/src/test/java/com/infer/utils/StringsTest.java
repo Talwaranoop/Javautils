@@ -23,14 +23,12 @@ public class StringsTest {
     }
 
     @Test
-    public void testvoidLowercase() {
+    public void testVoidLowercase() {
         Assert.assertEquals(toLowerCase("THIS IS ANOOP", 4, 4),("THIS is ANOOP"));
     }
 
     @Test
-    public void testvoidUpperCase() {
-        Assert.assertEquals(toUpperCase("this is anoop", 4, 4),("this IS anoop"));
-    }
+    public void testVoidUpperCase() {Assert.assertEquals(toUpperCase("this is anoop", 4, 4),("this IS anoop"));}
 
     @Test
     public void testTestLowerCase() throws Exception {
@@ -43,12 +41,12 @@ public class StringsTest {
     }
 
     @Test
-    public void testTestvoidLowercase() throws Exception {
+    public void testTestVoidLowercase() throws Exception {
 
     }
 
     @Test
-    public void testTestvoidUpperCase() throws Exception {
+    public void testTestVoidUpperCase() throws Exception {
 
     }
 }
