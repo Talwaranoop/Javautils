@@ -8,7 +8,7 @@ package com.infer.utils;
  * @since 5/22/2015.
  */
 public class Strings {
-    public static final int delta = 32;
+    private static final int DELTA = 32;//DELTA is the difference between the ASCII codes of UpperCase and LowerCase alphabet.
     /**
      * This method converts a string to Lower Case.
      *
