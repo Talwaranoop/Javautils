@@ -1,42 +1,94 @@
 package com.infer.utils;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
-import static com.infer.utils.Strings.*;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
- * Created by Anoop on 6/1/2015.
+ * The StringsTest program checks the various conditions
+ * through different test cases to make sure that for different
+ * inputs, the correct expected outputs or actions happen.
+ *
+ * Also,it makes sure that for bad inputs, correct handling
+ * occurs and the expected outputs or actions still happen.
+ *
+ * @author Anoop
+ * @since  6/1/2015.
  */
 public class StringsTest {
 
   @Test
-
-  public void testLowerCase() throws IllegalArgumentException {
-
-    Assert.assertEquals(toLowerCase(null, 2, 0), (null));
+  /*This test case checks if the string gets converted to Lowercase
+  from the given start to end indices.
+   */
+  public void shouldConvertStringToLowerCaseFromStartToEndIndices() {
+    String recorded;
+    String input = "PROGRAMMING IS FUN";//string to be LowerCased.
+    String expected = "programming is fun";//expected LowerCased string.
+    int start = input.indexOf("P");//declares the alphabet from which string will be LowerCased.
+    int end = input.length() - start;//declares the length up to which string will be LowerCased.
+    recorded = Strings.toLowerCase(input, start, end);//Stores the value returned from the function.
+    Assert.assertEquals(recorded, expected);
   }
 
   @Test
-  public void testUpperCase() {
-    Assert.assertEquals(toUpperCase("anoop", 2, -1), ("anoop"));
+  /*This test case checks if the string gets converted to Uppercase
+  from the given start to end indices.
+   */
+  public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
+    String change;
+    String s = "my name is anoop";//string to be UpperCased.
+    String expected = "my NAME IS ANOOP";//expected UpperCased string.
+    int start = s.indexOf("n");//declares the alphabet from which string will be UpperCased.
+    int end = s.length() - start;//declares the length up to which string will be UpperCased.
+    change = Strings.toUpperCase(s, start, end);//Stores the value returned from the function .
+    Assert.assertEquals(change, expected);
   }
 
   @Test
+  /*This test case checks if the string gets converted to Lowercase
+  from the given start to end indices using byte.
+   */
   public void shouldConvertBytesToLowerCaseFromStartToEndIndices() {
-    String testCase = "THIS IS A TEST";
-    String expected = "This is a test";
-    byte[] bytes = testCase.getBytes();
-    int start = testCase.indexOf("H");
-    int end = testCase.length() - start;
-    // upper case bytes should be converted to lowercase
-    Strings.toByteLowerCase(bytes, start, end);
+    String testCase = "THIS IS A TEST";//string to be LowerCased.
+    String expected = "This is a test";//expected LowerCased string.
+    byte[] bytes = testCase.getBytes();//coverts the string to byte[] and stores it in variable bytes.
+    int start = testCase.indexOf("H");//declares the alphabet from which string will be LowerCased.
+    int end = testCase.length() - start;//declares the length up to which string will be LowerCased.
+    Strings.toByteLowerCase(bytes, start, end);// Upper case bytes should be converted to Lowercase.
     Assert.assertEquals(new String(bytes), expected);
   }
 
   @Test
-  public void testVoidUpperCase() {
-    //Assert.assertEquals(toByteUpperCase("".getBytes(), 4, 4), ("this IS anoop"));
+  /*This test case checks if the string gets converted to Uppercase
+  from the given start to end indices using byte.
+   */
+  public void shouldConvertBytesToUpperCaseFromStartToEndIndices() {
+    String entered = "videogames are fun";//string to be UpperCased.
+    String expected = "viDEOGAMES ARE FUN";//expected UpperCased string.
+    byte[] bytes = entered.getBytes();//coverts the string to byte[] and stores it in variable bytes.
+    int start = entered.indexOf("d");//declares the alphabet from which string will be UpperCased.
+    int end = entered.length() - start;//declares the length up to which string will be UpperCased
+    Strings.toByteUpperCase(bytes, start, end);// Lower case bytes should be converted to Uppercase.
+    Assert.assertEquals(new String(bytes), expected);
   }
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
 
+  @Test
+  public void throwsExceptionWhenNegativeNumbersAreGiven() {
+    // arrange
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage(equalTo("negatives not allowed: [-2]"));
+    // act
+    int len = 2;
+    String s= "iammad";
+    int start =1;
+    Strings.toLowerCase(s,start,len);
+  }
 }
+
+
