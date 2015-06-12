@@ -21,7 +21,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class StringsTest {
 
   @Test
-  /*This test case checks if the string gets converted to Lowercase
+  /**This test case checks if the string gets converted to Lowercase
   from the given start to end indices.
    */
   public void shouldConvertStringToLowerCaseFromStartToEndIndices() {
@@ -35,7 +35,7 @@ public class StringsTest {
   }
 
   @Test
-  /*This test case checks if the string gets converted to Uppercase
+  /**This test case checks if the string gets converted to Uppercase
   from the given start to end indices.
    */
   public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
@@ -49,7 +49,7 @@ public class StringsTest {
   }
 
   @Test
-  /*This test case checks if the string gets converted to Lowercase
+  /**This test case checks if the string gets converted to Lowercase
   from the given start to end indices using byte.
    */
   public void shouldConvertBytesToLowerCaseFromStartToEndIndices() {
@@ -63,7 +63,7 @@ public class StringsTest {
   }
 
   @Test
-  /*This test case checks if the string gets converted to Uppercase
+  /**This test case checks if the string gets converted to Uppercase
   from the given start to end indices using byte.
    */
   public void shouldConvertBytesToUpperCaseFromStartToEndIndices() {
@@ -82,9 +82,9 @@ public class StringsTest {
   public void throwsExceptionWhenNegativeNumbersAreGiven() {
     // arrange
     thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage(equalTo("negatives not allowed: [-2]"));
+    thrown.expectMessage(equalTo("negatives not allowed: [-len]"));
     // act
-    int len = 2;
+    int len = -2;
     String s= "iammad";
     int start =1;
     Strings.toLowerCase(s,start,len);
