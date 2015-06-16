@@ -11,18 +11,3 @@ public interface Dictionary {
     Collection<String> getWords();
 }
 
-class EntityDictionary implements Dictionary {
-
-
-    public void add(String str) {
-
-    }
-
-    public boolean contains(String str) {
-        return false;
-    }
-
-    public Collection<String> getWords() {
-        return null;
-    }
-}
