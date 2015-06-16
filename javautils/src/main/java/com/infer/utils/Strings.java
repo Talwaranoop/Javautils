@@ -84,7 +84,7 @@ public class Strings {
                 throw new IllegalArgumentException("The argument " + len + "cannot be zero or negative");
             for (int i = start; i < start + len; i++) {
                 if (byteStream[i] >= 65 && byteStream[i] <= 90) {
-                    byteStream[i] = (byte) (byteStream[i] + delta);
+                    byteStream[i] = (byte) (byteStream[i] + DELTA);
                     /**
                      *65 & 90 are ascii codes of byte representing uppercase
                      *  alphabets A & Z respectively.
@@ -118,7 +118,7 @@ public class Strings {
                 throw new NumberFormatException("The argument " + len + "cannot be zero or negative");
             for (int i = start; i < start + len; i++) {
                 if (byteStream[i] >= 97 && byteStream[i] <= 122) {
-                    byteStream[i] = (byte) (byteStream[i] - delta);
+                    byteStream[i] = (byte) (byteStream[i] - DELTA);
                     /**97 & 122 are ascii codes of byte representing lowercase
                      * alphabets a & z respectively.
                      * Where as the '32' is the difference between
