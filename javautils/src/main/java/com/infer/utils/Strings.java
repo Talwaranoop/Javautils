@@ -115,7 +115,7 @@ public class Strings {
             if (start<0)
                 throw new IllegalArgumentException("The argument " + start+ "cannot be negative");
             if (len <= 0)
-                throw new NumberFormatException("The argument " + len + "cannot be zero or negative");
+                throw new IllegalArgumentException("The argument " + len + "cannot be zero or negative");
             for (int i = start; i < start + len; i++) {
                 if (byteStream[i] >= 97 && byteStream[i] <= 122) {
                     byteStream[i] = (byte) (byteStream[i] - DELTA);

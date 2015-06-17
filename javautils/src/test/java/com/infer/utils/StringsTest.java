@@ -41,7 +41,7 @@ public class StringsTest {
   public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
     String change;
     String s = "my name is anoop";//string to be UpperCased.
-    String expected = "my NAME IS ANOOP";//expected UpperCased string.
+    CharSequence expected= "my NAME IS ANOOP";//expected UpperCased string.
     int start = s.indexOf("n");//declares the alphabet from which string will be UpperCased.
     int end = s.length() - start;//declares the length up to which string will be UpperCased.
     change = Strings.toUpperCase(s, start, end);//Stores the value returned from the function .
@@ -82,12 +82,12 @@ public class StringsTest {
   public void throwsExceptionWhenNegativeNumbersAreGiven() {
     // arrange
     thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage(equalTo("negatives not allowed: [-len]"));
-    // act
     int len = -2;
-    String s= "iammad";
-    int start =1;
-    Strings.toLowerCase(s,start,len);
+    thrown.expectMessage(equalTo("The argument " + len + "cannot be negative"));
+    // act
+    String s = "iammad";
+    int start = 1;
+    Strings.toLowerCase(s, start, len);
   }
 }
 
