@@ -41,7 +41,7 @@ public class StringsTest {
   public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
     String change;
     String s = "my name is anoop";//string to be UpperCased.
-    CharSequence expected= "my NAME IS ANOOP";//expected UpperCased string.
+    String expected= "my NAME IS ANOOP";//expected UpperCased string.
     int start = s.indexOf("n");//declares the alphabet from which string will be UpperCased.
     int end = s.length() - start;//declares the length up to which string will be UpperCased.
     change = Strings.toUpperCase(s, start, end);//Stores the value returned from the function .
