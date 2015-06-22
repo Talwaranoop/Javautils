@@ -24,14 +24,11 @@ public class EntityDictionary implements Dictionary {
      *            add the word to the dictionary.
      */
         public void add(String str)throws IllegalArgumentException {
+
             if(str == null)
                 throw new IllegalArgumentException("The string cannot be null!");
             if (str.isEmpty())
                 throw new IllegalArgumentException("String cannot be empty");
-            if (str.matches(".*[^ A-Za-z0-9].*"))//Regular expression for matching special characters.
-                throw new IllegalArgumentException("String cannot contain special characters");
-            if (str.matches(".*[0-9].*"))//Regular expression for matching numbers.
-                throw new IllegalArgumentException("String cannot contain numbers");
             hs.add(str);//add elements to HashSet
 
         }

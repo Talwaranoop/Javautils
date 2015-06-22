@@ -8,7 +8,19 @@ package com.infer.utils;
  * @since 5/22/2015.
  */
 public class Strings {
+    private static Strings common = new Strings( );
+    /* A private Constructor prevents any other
+    * class from instantiating.
+    */
+    private Strings(){ }
     private static final int DELTA = 32;//DELTA is the difference between the ASCII codes of UpperCase and LowerCase alphabet.
+
+    public static Strings getInstance(){
+        if(common == null){
+            common = new Strings();
+        }
+        return common;
+    }
     /**
      * This method converts a string to Lower Case.
      *
@@ -19,10 +31,13 @@ public class Strings {
      *              which the string will be LowerCased.
      * @return This returns the converted LowerCased string.
      */
+
     public static String toLowerCase(String s, int start, int len) throws IllegalArgumentException {
 
         if(s == null)
             throw new IllegalArgumentException("The string cannot be null!");
+        if (s.matches(".*[^ A-Za-z0-9].*"))//Regular expression for matching special characters.
+            throw new IllegalArgumentException("String cannot contain special characters");
         char[] charArray = s.toCharArray();//Stores sting in array
         if (start<0)
             throw new IllegalArgumentException("The argument " + start+ "cannot be negative");

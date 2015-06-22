@@ -1,10 +1,8 @@
 package com.infer.utils;
-
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
@@ -88,6 +86,41 @@ public class StringsTest {
     String s = "iammad";
     int start = 1;
     Strings.toLowerCase(s, start, len);
+  }
+  @Test
+  public void throwsIllegalArgumentExceptionWhenSpecialCharactersAreGiven(){
+    // arrange
+    thrown.expect(IllegalArgumentException.class);
+    String input = "@#$";
+    thrown.expectMessage(equalTo("String cannot contain special characters"));
+    // act
+    int start = 1;
+    int len = 2;
+    Strings.toLowerCase(input, start, len);
+
+
+  }
+  @Test
+  public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
+    // arrange
+    thrown.expect(IllegalArgumentException.class);
+    String input = null;
+    thrown.expectMessage(equalTo("The string cannot be null!"));
+    // act
+    int start = 1;
+    int len = 2;
+    Strings.toLowerCase(null, start, len);
+  }
+  @Test
+  public void throwsIllegalArgumentExceptionWhenNullByteArrayIsGiven() {
+    byte[] bytes = null;
+    // arrange
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage(equalTo("The byte cannot be null!"));
+    // act
+    int start = 1;
+    int len = 2;
+    Strings.toByteLowerCase(null, start, len);
   }
 }
 

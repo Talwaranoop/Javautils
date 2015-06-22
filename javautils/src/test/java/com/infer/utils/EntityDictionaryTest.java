@@ -51,24 +51,5 @@ public class EntityDictionaryTest {
         // act
         obj.add(input);
     }
-    @Test
-    public void throwsIllegalArgumentExceptionWhenNumbersAreGiven(){
-        // arrange
-        thrown.expect(IllegalArgumentException.class);
-        String input = "12345";
-        thrown.expectMessage(equalTo("String cannot contain numbers"));
-        // act
-        obj.add(input);
 
-    }
-    @Test
-    public void throwsIllegalArgumentExceptionWhenSpecialCharactersAreGiven(){
-        // arrange
-        thrown.expect(IllegalArgumentException.class);
-        String input = "@#$";
-        thrown.expectMessage(equalTo("String cannot contain special characters"));
-        // act
-        obj.add(input);
-
-    }
 }
