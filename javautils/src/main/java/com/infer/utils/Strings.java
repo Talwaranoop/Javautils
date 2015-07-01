@@ -1,4 +1,8 @@
     package com.infer.utils;
+
+    import java.util.Collection;
+    import java.util.List;
+
     /**
      * The Strings program implements an application that
      * simply converts a string to uppercase or lowercase
@@ -8,7 +12,7 @@
      * @since 5/22/2015.
      */
     public class Strings {
-        private static Strings common = new Strings( );
+        private Strings common = new Strings( );
         /* A private Constructor prevents any other
         * class from instantiating.
         */
@@ -142,5 +146,9 @@
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
+        }
+        public static List<String>combinations(Collection<String>string ){
+
+return null;
         }
     }

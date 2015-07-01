@@ -11,45 +11,43 @@
      * @since  6/19/2015.
      */
     public class WordFrequency {
-        Set diction = new HashSet<String>();//HashSet declaration
-         Map<String, Integer> mp= new HashMap<String, Integer>();//HashMap declaration
+        Collection<String> diction = new HashSet<String>();//HashSet declaration
 
-        public WordFrequency() {//Default Constructor
+        public WordFrequency() {
 
         }
 
         public WordFrequency(EntityDictionary dict) {//object of EntityDictionary class passed as constructor argument.
-            diction = (Set) dict.getWords();//copies all the words present in the EntityDictionary set to the diction set.
+            diction = dict.getWords();//copies all the words present in the EntityDictionary set to the diction set.
         }
+
         /**
          * This method adds the Sentence to the Dictionary.
-         * @param str : This parameter has been used to
-         *              add Sentence to the Dictionary.
+         *
+         * @param sentence : This parameter has been used to
+         *                 getWordFrequency Sentence to the Dictionary.
          */
-        public void add(String str)throws IllegalArgumentException {
-            if(str == null)
+
+        /* A function will be written to make the combinations of the words and will be put in the map*/
+        public Map<String, Integer> getWordFrequency(String sentence) throws IllegalArgumentException {
+            if (sentence == null)
                 throw new IllegalArgumentException("The string cannot be null!");
-            if (str.isEmpty())
+            if (sentence.isEmpty())
                 throw new IllegalArgumentException("String cannot be empty");
-            for (Object aDiction : diction) {
-                mp.put((String) aDiction, 0);//Puts all the words from diction set to map 'mp' and assigns 0 value to words.
-            }
-                String[] words = str.split("\\s+"); // Splits the input line.
+            String[] words = sentence.split("\\s+"); // Splits the line on White Space.
+            Map<String, Integer> wordToCount = new HashMap<String, Integer>();
 
             for (String word : words) {
-                    word = word.replaceAll("[.,?!:;/]", "");// replaces any grammatical characters.
-
-                    if(mp.containsKey(word)) {
-                        Integer val= mp.get(word);
-                        mp.put(word,val + 1);// increases the count value of the word.
-                    }
+                if (!diction.contains(word)) {
+                    continue;
                 }
-            // Printing all words stored in the map.
-            for(String key: mp.keySet())
-            {
-                System.out.println(key + ": " + mp.get(key));
-
+                if (wordToCount.containsKey(word)) {
+                    Integer val = wordToCount.get(word);
+                    wordToCount.put(word, val + 1);// increases the count value of the word.
+                } else {
+                    wordToCount.put(word, 1);
+                }
             }
+            return wordToCount;
         }
     }
-

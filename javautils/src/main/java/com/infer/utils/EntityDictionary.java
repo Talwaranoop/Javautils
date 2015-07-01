@@ -21,7 +21,7 @@
         /**
          * This method adds the word to the dictionary.
          * @param str : This parameter has been used to
-         *              add the word to the dictionary.
+         *              getWordFrequency the word to the dictionary.
          */
             public void add(String str)throws IllegalArgumentException {
 
@@ -29,7 +29,7 @@
                     throw new IllegalArgumentException("The string cannot be null!");
                 if (str.isEmpty())
                     throw new IllegalArgumentException("String cannot be empty");
-                hs.add(str);//add elements to HashSet
+                hs.add(str);//getWordFrequency elements to HashSet
 
             }
 
@@ -49,7 +49,6 @@
          * @return :Returns all the words present in the dictionary.
          */
             public Collection<String> getWords() {
-                hs.size();
                 return hs;
             }
         }
