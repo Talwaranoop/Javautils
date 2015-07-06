@@ -4,6 +4,7 @@
     import org.junit.Test;
     import org.junit.rules.ExpectedException;
 
+    import java.util.Collections;
     import java.util.HashMap;
     import java.util.Map;
 
@@ -21,21 +22,20 @@
      * @since  6/19/2015.
      */
     public class WordFrequencyTest {
-        WordFrequency obj = new WordFrequency();//
+        WordFrequency obj = new WordFrequency();
 
         @Test
         /**This test case iterates over the sentences given as
          * input and counts the frequency of dictionary words.
          */
-        public void countWords(){
-            Map<String, Integer> mp= new HashMap<String, Integer>();//HashMap declaration
-            EntityDictionary git = new EntityDictionary();
-            git.add("A");
-            git.add("B");
-            git.add("C");
-            git.add("D");
-            WordFrequency dl = new WordFrequency(git);
-           mp = dl.getWordFrequency("A can't be B, A may also be C, How about C, D and A");
+        public void shouldCountDictionaryWordsInSentences(){
+            Map<String, Integer> mp= new HashMap<String, Integer>();
+            EntityDictionary dictionary = new EntityDictionary();
+            dictionary.add("Anoop");
+            dictionary.add("Baba");
+            dictionary.add("Cat");
+            WordFrequency wordFrequency = new WordFrequency(dictionary);
+            mp = wordFrequency.getWordFrequency("Anoop can't be Baba and Anoop can never be D and D can never be Cat ");
             for(String key: mp.keySet())
             {
                 System.out.println(key + ": " + mp.get(key));

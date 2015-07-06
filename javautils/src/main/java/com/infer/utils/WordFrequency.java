@@ -11,6 +11,7 @@
      * @since  6/19/2015.
      */
     public class WordFrequency {
+        List<String> getCombinations = new ArrayList<String>();
         Collection<String> diction = new HashSet<String>();//HashSet declaration
 
         public WordFrequency() {
@@ -48,6 +49,17 @@
                     wordToCount.put(word, 1);
                 }
             }
+            getCombinations = Strings.getAllCombination(wordToCount.keySet());
+            for(String s:getCombinations)
+            {
+                wordToCount.put(s,0);
+            }
             return wordToCount;
         }
-    }
+
+       public Map<String,Integer> getCountOfCombinations(String sentence){
+
+
+            return null;
+        }
+   }

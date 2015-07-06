@@ -1,7 +1,6 @@
     package com.infer.utils;
 
-    import java.util.Collection;
-    import java.util.List;
+    import java.util.*;
 
     /**
      * The Strings program implements an application that
@@ -147,8 +146,51 @@
                 e.printStackTrace();
             }
         }
-        public static List<String>combinations(Collection<String>string ){
+        public static List<String> getAllCombination(Set<String> wordSet){
+            List<String> words = new ArrayList<String>();
+            for(String s: wordSet)
+            {
+                words.add(s);
+            }
 
-return null;
+            Collections.sort(words);
+            List<String> result = new ArrayList<String>();
+            int n = words.size();// number of words in the list.
+            int count = 2;
+
+            while(count <= n){  // the outer while loop will run 'n' number of times.
+
+                int sIndex = 0;
+
+                for(int j=sIndex;j<n;j++){  // the inner loop will run a max of n times and minimum of 1 time for different inputs.
+
+                    if(j+count > n)  // exit condition.
+                        break;
+
+                    int lengthOfConstantString = count-1;
+                    int endOfConstantStringIndex = j +lengthOfConstantString;
+                    String constString="";
+
+                    for(int k = j; k< endOfConstantStringIndex; k++){ // loop to find out the constant string
+                        constString =constString+""+words.get(k)+",";
+
+                    }
+
+                    for(int l = endOfConstantStringIndex; l <n;l++){  //we are appending variable string one by one to constant string and storing it in list
+                        String s = constString + words.get(l);
+                        result.add(s);
+                        //System.out.println(s);
+                    }
+
+                    if(constString.length() ==0) // exit condition when we get single letter output. i.e. A,B,C,D
+                        break;
+
+                }
+
+                count++;
+            }
+            return result;
+
         }
+
     }
