@@ -17,7 +17,7 @@
      */
 
     public class EntityDictionary implements Dictionary {
-        Set<String> hs = new HashSet<String>();//HashSet declaration
+        Set<String> dictionaryWords = new HashSet<>();
         /**
          * This method adds the word to the dictionary.
          * @param str : This parameter has been used to
@@ -29,7 +29,7 @@
                     throw new IllegalArgumentException("The string cannot be null!");
                 if (str.isEmpty())
                     throw new IllegalArgumentException("String cannot be empty");
-                hs.add(str);//getWordFrequency elements to HashSet
+                dictionaryWords.add(str);//getWordFrequency elements to HashSet
 
             }
 
@@ -39,7 +39,7 @@
          * found it returns true else false.
          */
             public boolean contains(String str) {
-                return (hs.contains(str));
+                return (dictionaryWords.contains(str));
 
             }
 
@@ -49,7 +49,7 @@
          * @return :Returns all the words present in the dictionary.
          */
             public Collection<String> getWords() {
-                return hs;
+                return dictionaryWords;
             }
         }
 

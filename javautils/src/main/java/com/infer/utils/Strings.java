@@ -1,6 +1,7 @@
     package com.infer.utils;
 
     import java.util.*;
+    import java.util.stream.Collectors;
 
     /**
      * The Strings program implements an application that
@@ -106,7 +107,6 @@
 
                     }
                 }
-                System.out.println(new String(byteStream));
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
@@ -141,20 +141,19 @@
                 }
                 /**IndexOutOfBoundException is thrown when the entered value exceeds the last index of the array
                  */
-                System.out.println(new String(byteStream));
             } catch (IndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
         }
         public static List<String> getAllCombination(Set<String> wordSet){
-            List<String> words = new ArrayList<String>();
-            for(String s: wordSet)
-            {
-                words.add(s);
-            }
+            List<String> words = new ArrayList<>();
+            if (wordSet == null)
+                throw new IllegalArgumentException("wordSet cannot be null");
+            if (wordSet.contains(""))
+                throw new IllegalArgumentException("wordSet cannot be empty");
+            words.addAll(wordSet.stream().collect(Collectors.toList()));
 
-            Collections.sort(words);
-            List<String> result = new ArrayList<String>();
+            List<String> result = new ArrayList<>();
             int n = words.size();// number of words in the list.
             int count = 2;
 

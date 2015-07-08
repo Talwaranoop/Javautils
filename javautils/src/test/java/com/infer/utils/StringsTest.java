@@ -3,6 +3,10 @@
     import org.junit.Rule;
     import org.junit.Test;
     import org.junit.rules.ExpectedException;
+
+    import java.util.HashSet;
+    import java.util.Set;
+
     import static org.hamcrest.core.IsEqual.equalTo;
 
     /**
@@ -104,7 +108,6 @@
       public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
-        String input = null;
         thrown.expectMessage(equalTo("The string cannot be null!"));
         // act
         int start = 1;
@@ -113,7 +116,6 @@
       }
       @Test
       public void throwsIllegalArgumentExceptionWhenNullByteArrayIsGiven() {
-        byte[] bytes = null;
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("The byte cannot be null!"));
@@ -121,6 +123,22 @@
         int start = 1;
         int len = 2;
         Strings.toByteLowerCase(null, start, len);
+      }
+      @Test
+      public void throwsIllegalArgumentExceptionWhenEmptyWordSetIsGiven() {
+        Set<String> giveInput = new HashSet<>();
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        giveInput.add("");
+        thrown.expectMessage(equalTo("wordSet cannot be empty"));
+        Strings.getAllCombination(giveInput);
+      }
+      @Test
+      public void throwsIllegalArgumentExceptionWhenNullWordSetIsGiven(){
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("wordSet cannot be null"));
+        Strings.getAllCombination(null);
       }
     }
 

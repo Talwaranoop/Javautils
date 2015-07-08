@@ -1,10 +1,9 @@
     package com.infer.utils;
 
+    import org.junit.Before;
     import org.junit.Rule;
     import org.junit.Test;
     import org.junit.rules.ExpectedException;
-
-    import java.util.Collections;
     import java.util.HashMap;
     import java.util.Map;
 
@@ -22,14 +21,18 @@
      * @since  6/19/2015.
      */
     public class WordFrequencyTest {
-        WordFrequency obj = new WordFrequency();
 
+        private WordFrequency obj;
+        @Before
+        public void executedBeforeEach() {
+            obj = new WordFrequency();
+        }
         @Test
         /**This test case iterates over the sentences given as
          * input and counts the frequency of dictionary words.
          */
         public void shouldCountDictionaryWordsInSentences(){
-            Map<String, Integer> mp= new HashMap<String, Integer>();
+            Map<String, Integer> mp;
             EntityDictionary dictionary = new EntityDictionary();
             dictionary.add("Anoop");
             dictionary.add("Baba");
@@ -41,7 +44,7 @@
                 System.out.println(key + ": " + mp.get(key));
 
             }
-        }
+         }
 
 
         @Rule
@@ -54,7 +57,6 @@
         public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
             // arrange
             thrown.expect(IllegalArgumentException.class);
-            String input = null;
             thrown.expectMessage(equalTo("The string cannot be null!"));
             // act
             obj.getWordFrequency(null);
@@ -70,5 +72,20 @@
             thrown.expectMessage(equalTo("String cannot be empty"));
             // act
             obj.getWordFrequency(input);
+
+
+        }
+
+        @Test
+        /**This test case confirms that if the null Dictionary is entered
+         * as input the correct handling occurs.
+         */
+        public void throwsIllegalArgumentExceptionWhenNullDictionaryIsGiven() {
+            // arrange
+            thrown.expect(IllegalArgumentException.class);
+            thrown.expectMessage(equalTo("The Dictionary cannot be null!"));
+            // act
+            WordFrequency wordFrequency = new WordFrequency(null);
+
         }
     }

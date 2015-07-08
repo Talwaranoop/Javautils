@@ -1,5 +1,5 @@
     package com.infer.utils;
-    import org.junit.Assert;
+    import org.junit.Before;
     import org.junit.Rule;
     import org.junit.Test;
     import org.junit.rules.ExpectedException;
@@ -19,18 +19,10 @@
      */
 
     public class EntityDictionaryTest {
-        EntityDictionary obj = new EntityDictionary();
-
-        @Test
-        /**This test case checks the words entered
-         in the dictionary.
-         */
-        public void willCheckTheWordsEntered() {
-
-            String input = "programming";
-            String expected = "programming";
-            obj.add(input);
-            Assert.assertEquals(input, expected);
+        private EntityDictionary obj;
+        @Before
+        public void executedBeforeEach() {
+            obj = new EntityDictionary();
         }
 
         @Rule
@@ -43,7 +35,6 @@
         public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
             // arrange
             thrown.expect(IllegalArgumentException.class);
-            String input = null;
             thrown.expectMessage(equalTo("The string cannot be null!"));
             // act
             obj.add(null);

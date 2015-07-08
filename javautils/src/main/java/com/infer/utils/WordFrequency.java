@@ -11,14 +11,18 @@
      * @since  6/19/2015.
      */
     public class WordFrequency {
-        List<String> getCombinations = new ArrayList<String>();
-        Collection<String> diction = new HashSet<String>();//HashSet declaration
+        public List<String> Combinations = new ArrayList<>();
+        public Collection<String> diction = new HashSet<>();
 
         public WordFrequency() {
 
         }
 
-        public WordFrequency(EntityDictionary dict) {//object of EntityDictionary class passed as constructor argument.
+        public WordFrequency(EntityDictionary dict) throws IllegalArgumentException{//object of EntityDictionary class passed as constructor argument.
+            if(dict == null)
+                throw new IllegalArgumentException("The Dictionary cannot be null!");
+            if (dict.contains(""))
+                throw new IllegalArgumentException("Dictionary cannot be empty");
             diction = dict.getWords();//copies all the words present in the EntityDictionary set to the diction set.
         }
 
@@ -35,8 +39,8 @@
                 throw new IllegalArgumentException("The string cannot be null!");
             if (sentence.isEmpty())
                 throw new IllegalArgumentException("String cannot be empty");
-            String[] words = sentence.split("\\s+"); // Splits the line on White Space.
-            Map<String, Integer> wordToCount = new HashMap<String, Integer>();
+            String[]words = sentence.split("\\s+"); // Splits the line on White Space.
+            Map<String, Integer> wordToCount = new HashMap<>();
 
             for (String word : words) {
                 if (!diction.contains(word)) {
@@ -49,16 +53,15 @@
                     wordToCount.put(word, 1);
                 }
             }
-            getCombinations = Strings.getAllCombination(wordToCount.keySet());
-            for(String s:getCombinations)
+            Combinations = Strings.getAllCombination(wordToCount.keySet());
+            for(String s: Combinations)
             {
-                wordToCount.put(s,0);
+                wordToCount.put(s,1);
             }
             return wordToCount;
         }
 
        public Map<String,Integer> getCountOfCombinations(String sentence){
-
 
             return null;
         }
