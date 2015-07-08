@@ -23,18 +23,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
  */
 public class WordFrequencyTest {
 
-  private WordFrequency obj;
+  private  WordFrequency wordFrequency;
 
   @Before
   public void executedBeforeEach() {
-    obj = new WordFrequency();
-  }
-
-  @Test
-  /**This test case iterates over the sentences given as
-   * input and counts the frequency of dictionary words.
-   */
-  public void shouldCountDictionaryWordsInSentences() {
     EntityDictionary dictionary = new EntityDictionary();
     dictionary.add("Apple");
     dictionary.add("Samsung");
@@ -45,7 +37,15 @@ public class WordFrequencyTest {
     dictionary.add("Twitter");
     dictionary.add("Microsoft");
 
-    WordFrequency wordFrequency = new WordFrequency(dictionary);
+    wordFrequency = new WordFrequency(dictionary);
+  }
+
+  @Test
+  /**This test case iterates over the sentences given as
+   * input and counts the frequency of dictionary words.
+   */
+  public void shouldCountDictionaryWordsInSentences() {
+
 
     Map<String, Integer> wordFrequencies = new HashMap<>();
 
@@ -72,7 +72,7 @@ public class WordFrequencyTest {
     thrown.expect(IllegalArgumentException.class);
     thrown.expectMessage(equalTo("The string cannot be null!"));
     // act
-    obj.getWordFrequency(null);
+    wordFrequency.getWordFrequency(null);
   }
 
   @Test
@@ -85,9 +85,7 @@ public class WordFrequencyTest {
     String input = "";
     thrown.expectMessage(equalTo("String cannot be empty"));
     // act
-    obj.getWordFrequency(input);
-
-
+    wordFrequency.getWordFrequency(input);
   }
 
   @Test
