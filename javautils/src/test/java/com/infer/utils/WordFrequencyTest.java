@@ -6,7 +6,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -45,9 +47,17 @@ public class WordFrequencyTest {
    * input and counts the frequency of dictionary words.
    */
   public void shouldCountDictionaryWordsInSentences() {
+    Set<String> wordFrequencies = new HashSet<>();
+    wordFrequencies.add("Apple iphone has out numbered Samsung galaxy");
+    wordFrequencies.add("Tesla and Google are showcasing their self driving cars");
+    wordFrequencies.add("Can Microsoft take a lead on Google Android");
+    wordFrequencies.add("Google may acquire Twitter");
+
+    System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
 
 
-    Map<String, Integer> wordFrequencies = new HashMap<>();
+
+   /* Map<String, Integer> wordFrequencies = new HashMap<>();
 
     Map<String, Integer> wordFrequency1 = wordFrequency.getWordFrequency("Apple iphone has out numbered Samsung galaxy");
     Map<String, Integer> wordFrequency2 = wordFrequency.getWordFrequency("Tesla and Google are showcasing their self driving cars");
@@ -55,8 +65,7 @@ public class WordFrequencyTest {
     Map<String, Integer> wordFrequency4 = wordFrequency.getWordFrequency("Google may acquire Twitter");
 
     for (String key : wordFrequency1.keySet()) {
-      System.out.println(key + ": " + wordFrequencies.get(key));
-    }
+      System.out.println(key + ": " + wordFrequencies.get(key));}*/
   }
 
 

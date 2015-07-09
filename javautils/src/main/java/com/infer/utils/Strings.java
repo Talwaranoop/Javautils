@@ -151,7 +151,7 @@
                 throw new IllegalArgumentException("wordSet cannot be null");
             if (wordSet.contains(""))
                 throw new IllegalArgumentException("wordSet cannot be empty");
-            words.addAll(wordSet.stream().collect(Collectors.toList()));
+            words.addAll(wordSet);
 
             List<String> result = new ArrayList<>();
             int n = words.size();// number of words in the list.

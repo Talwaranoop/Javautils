@@ -1,5 +1,7 @@
     package com.infer.utils;
 
+    import com.sun.org.apache.xpath.internal.compiler.Keywords;
+
     import java.util.*;
 
     /**
@@ -13,13 +15,9 @@
     public class WordFrequency {
         public List<String> Combinations = new ArrayList<>();
         public Collection<String> diction = new HashSet<>();
-
-        public WordFrequency() {
-
-        }
-
-        public WordFrequency(EntityDictionary dict) throws IllegalArgumentException{//object of EntityDictionary class passed as constructor argument.
-            if(dict == null)
+        public Map<String,Integer> finalCount = new HashMap<>();
+        public WordFrequency(EntityDictionary dict) throws IllegalArgumentException {//object of EntityDictionary class passed as constructor argument.
+            if (dict == null)
                 throw new IllegalArgumentException("The Dictionary cannot be null!");
             if (dict.contains(""))
                 throw new IllegalArgumentException("Dictionary cannot be empty");
@@ -39,7 +37,7 @@
                 throw new IllegalArgumentException("The string cannot be null!");
             if (sentence.isEmpty())
                 throw new IllegalArgumentException("String cannot be empty");
-            String[]words = sentence.split("\\s+"); // Splits the line on White Space.
+            String[] words = sentence.split("\\s+"); // Splits the line on White Space.
             Map<String, Integer> wordToCount = new HashMap<>();
 
             for (String word : words) {
@@ -54,15 +52,26 @@
                 }
             }
             Combinations = Strings.getAllCombination(wordToCount.keySet());
-            for(String s: Combinations)
-            {
-                wordToCount.put(s,1);
+            for (String s : Combinations) {
+                wordToCount.put(s, 1);
             }
             return wordToCount;
         }
 
-       public Map<String,Integer> getCountOfCombinations(String sentence){
-
-            return null;
+        public Map<String, Integer> getGlobalWordFrequency(Collection<String> sentences) {
+            Map<String, Integer> ms;
+                for (String sentence : sentences) {
+                    ms = getWordFrequency(sentence);
+                    for(String s: ms.keySet()){
+                        if (finalCount.containsKey(s)) {
+                            Integer val = finalCount.get(s);
+                            finalCount.put(s, val + 1);// increases the count value of the word.
+                        }
+                        else {
+                            finalCount.put(s, 1);
+                        }
+                    }
+                }
+            return finalCount;
         }
-   }
+        }
