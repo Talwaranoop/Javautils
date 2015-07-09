@@ -1,7 +1,5 @@
     package com.infer.utils;
 
-    import com.sun.org.apache.xpath.internal.compiler.Keywords;
-
     import java.util.*;
 
     /**
@@ -59,10 +57,10 @@
         }
 
         public Map<String, Integer> getGlobalWordFrequency(Collection<String> sentences) {
-            Map<String, Integer> ms;
+            Map<String, Integer> FinalMap;
                 for (String sentence : sentences) {
-                    ms = getWordFrequency(sentence);
-                    for(String s: ms.keySet()){
+                    FinalMap = getWordFrequency(sentence);
+                    for(String s: FinalMap.keySet()){
                         if (finalCount.containsKey(s)) {
                             Integer val = finalCount.get(s);
                             finalCount.put(s, val + 1);// increases the count value of the word.
