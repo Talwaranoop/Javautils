@@ -1,32 +1,33 @@
-    package com.infer.utils;
-    import org.junit.Assert;
-    import org.junit.Rule;
-    import org.junit.Test;
-    import org.junit.rules.ExpectedException;
+package com.infer.utils;
 
-    import java.util.HashSet;
-    import java.util.Set;
+import org.junit.Assert;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
-    import static org.hamcrest.core.IsEqual.equalTo;
+import java.util.HashSet;
+import java.util.Set;
 
-    /**
-     * The StringsTest program checks the various conditions
-     * through different test cases to make sure that for different
-     * inputs, the correct expected outputs or actions happen.
-     *
-     * Also,it makes sure that for bad inputs, correct handling
-     * occurs and the expected outputs or actions still happen.
-     *
-     * @author Anoop
-     * @since  6/1/2015.
+import static org.hamcrest.core.IsEqual.equalTo;
+
+/**
+ * The StringsTest program checks the various conditions
+ * through different test cases to make sure that for different
+ * inputs, the correct expected outputs or actions happen.
+ * <p>
+ * Also,it makes sure that for bad inputs, correct handling
+ * occurs and the expected outputs or actions still happen.
+ *
+ * @author Anoop
+ * @since 6/1/2015.
+ */
+public class StringsTest {
+
+    @Test
+    /**This test case checks if the string gets converted to Lowercase
+     from the given start to end indices.
      */
-    public class StringsTest {
-
-      @Test
-      /**This test case checks if the string gets converted to Lowercase
-      from the given start to end indices.
-       */
-      public void shouldConvertStringToLowerCaseFromStartToEndIndices() {
+    public void shouldConvertStringToLowerCaseFromStartToEndIndices() {
         String recorded;
         String input = "PROGRAMMING IS FUN";//string to be LowerCased.
         String expected = "programming is fun";//expected LowerCased string.
@@ -34,27 +35,27 @@
         int end = input.length() - start;//declares the length up to which string will be LowerCased.
         recorded = Strings.toLowerCase(input, start, end);//Stores the value returned from the function.
         Assert.assertEquals(recorded, expected);
-      }
+    }
 
-      @Test
-      /**This test case checks if the string gets converted to Uppercase
-      from the given start to end indices.
-       */
-      public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
+    @Test
+    /**This test case checks if the string gets converted to Uppercase
+     from the given start to end indices.
+     */
+    public void shouldConvertStringToUpperCaseFromStartToEndIndices() {
         String change;
         String s = "my name is anoop";//string to be UpperCased.
-        String expected= "my NAME IS ANOOP";//expected UpperCased string.
+        String expected = "my NAME IS ANOOP";//expected UpperCased string.
         int start = s.indexOf("n");//declares the alphabet from which string will be UpperCased.
         int end = s.length() - start;//declares the length up to which string will be UpperCased.
         change = Strings.toUpperCase(s, start, end);//Stores the value returned from the function .
         Assert.assertEquals(change, expected);
-      }
+    }
 
-      @Test
-      /**This test case checks if the string gets converted to Lowercase
-      from the given start to end indices using byte.
-       */
-      public void shouldConvertBytesToLowerCaseFromStartToEndIndices() {
+    @Test
+    /**This test case checks if the string gets converted to Lowercase
+     from the given start to end indices using byte.
+     */
+    public void shouldConvertBytesToLowerCaseFromStartToEndIndices() {
         String testCase = "THIS IS A TEST";//string to be LowerCased.
         String expected = "This is a test";//expected LowerCased string.
         byte[] bytes = testCase.getBytes();//coverts the string to byte[] and stores it in variable bytes.
@@ -62,13 +63,13 @@
         int end = testCase.length() - start;//declares the length up to which string will be LowerCased.
         Strings.toByteLowerCase(bytes, start, end);// Upper case bytes should be converted to Lowercase.
         Assert.assertEquals(new String(bytes), expected);
-      }
+    }
 
-      @Test
-      /**This test case checks if the string gets converted to Uppercase
-      from the given start to end indices using byte.
-       */
-      public void shouldConvertBytesToUpperCaseFromStartToEndIndices() {
+    @Test
+    /**This test case checks if the string gets converted to Uppercase
+     from the given start to end indices using byte.
+     */
+    public void shouldConvertBytesToUpperCaseFromStartToEndIndices() {
         String entered = "videogames are fun";//string to be UpperCased.
         String expected = "viDEOGAMES ARE FUN";//expected UpperCased string.
         byte[] bytes = entered.getBytes();//coverts the string to byte[] and stores it in variable bytes.
@@ -76,12 +77,13 @@
         int end = entered.length() - start;//declares the length up to which string will be UpperCased
         Strings.toByteUpperCase(bytes, start, end);// Lower case bytes should be converted to Uppercase.
         Assert.assertEquals(new String(bytes), expected);
-      }
-      @Rule
-      public ExpectedException thrown = ExpectedException.none();
+    }
 
-      @Test
-      public void throwsExceptionWhenNegativeNumbersAreGiven() {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void throwsExceptionWhenNegativeNumbersAreGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         int len = -2;
@@ -90,9 +92,10 @@
         String s = "iammad";
         int start = 1;
         Strings.toLowerCase(s, start, len);
-      }
-      @Test
-      public void throwsIllegalArgumentExceptionWhenSpecialCharactersAreGiven(){
+    }
+
+    @Test
+    public void throwsIllegalArgumentExceptionWhenSpecialCharactersAreGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         String input = "@#$";
@@ -103,9 +106,10 @@
         Strings.toLowerCase(input, start, len);
 
 
-      }
-      @Test
-      public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
+    }
+
+    @Test
+    public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("The string cannot be null!"));
@@ -113,9 +117,10 @@
         int start = 1;
         int len = 2;
         Strings.toLowerCase(null, start, len);
-      }
-      @Test
-      public void throwsIllegalArgumentExceptionWhenNullByteArrayIsGiven() {
+    }
+
+    @Test
+    public void throwsIllegalArgumentExceptionWhenNullByteArrayIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("The byte cannot be null!"));
@@ -123,23 +128,25 @@
         int start = 1;
         int len = 2;
         Strings.toByteLowerCase(null, start, len);
-      }
-      @Test
-      public void throwsIllegalArgumentExceptionWhenEmptyWordSetIsGiven() {
+    }
+
+    @Test
+    public void throwsIllegalArgumentExceptionWhenEmptyWordSetIsGiven() {
         Set<String> giveInput = new HashSet<>();
         // arrange
         thrown.expect(IllegalArgumentException.class);
         giveInput.add("");
         thrown.expectMessage(equalTo("wordSet cannot be empty"));
         Strings.getAllCombination(giveInput);
-      }
-      @Test
-      public void throwsIllegalArgumentExceptionWhenNullWordSetIsGiven(){
+    }
+
+    @Test
+    public void throwsIllegalArgumentExceptionWhenNullWordSetIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("wordSet cannot be null"));
         Strings.getAllCombination(null);
-      }
     }
+}
 
 

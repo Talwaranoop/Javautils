@@ -25,35 +25,36 @@ import static org.hamcrest.core.IsEqual.equalTo;
  */
 public class WordFrequencyTest {
 
-  private  WordFrequency wordFrequency;
+    private WordFrequency wordFrequency;
 
-  @Before
-  public void executedBeforeEach() {
-    EntityDictionary dictionary = new EntityDictionary();
-    dictionary.add("Apple");
-    dictionary.add("Samsung");
-    dictionary.add("Tesla");
-    dictionary.add("Exxon");
-    dictionary.add("Vioin");
-    dictionary.add("Google");
-    dictionary.add("Twitter");
-    dictionary.add("Microsoft");
+    @Before
+    public void executedBeforeEach() {
+        EntityDictionary dictionary = new EntityDictionary();
+        dictionary.add("Apple");
+        dictionary.add("Samsung");
+        dictionary.add("Samsung galaxy");
+        dictionary.add("Tesla");
+        dictionary.add("Exxon");
+        dictionary.add("Vioin");
+        dictionary.add("Google");
+        dictionary.add("Twitter");
+        dictionary.add("Microsoft");
 
-    wordFrequency = new WordFrequency(dictionary);
-  }
+        wordFrequency = new WordFrequency(dictionary);
+    }
 
-  @Test
-  /**This test case iterates over the sentences given as
-   * input and counts the frequency of dictionary words.
-   */
-  public void shouldCountDictionaryWordsInSentences() {
-    Set<String> wordFrequencies = new HashSet<>();
-    wordFrequencies.add("Apple iphone has out numbered Samsung galaxy");
-    wordFrequencies.add("Tesla and Google are showcasing their self driving cars");
-    wordFrequencies.add("Can Microsoft take a lead on Google Android");
-    wordFrequencies.add("Google may acquire Twitter");
+    @Test
+    /**This test case iterates over the sentences given as
+     * input and counts the frequency of dictionary words.
+     */
+    public void shouldCountDictionaryWordsInSentences() {
+        Set<String> wordFrequencies = new HashSet<>();
+        wordFrequencies.add("Apple iphone has out numbered Samsung galaxy");
+        wordFrequencies.add("Tesla and Google are showcasing their self driving cars Samsung");
+        wordFrequencies.add("Can Microsoft take a lead on Google Android");
+        wordFrequencies.add("Google may acquire Twitter");
 
-    System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
+        System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
 
 
 
@@ -66,47 +67,47 @@ public class WordFrequencyTest {
 
     for (String key : wordFrequency1.keySet()) {
       System.out.println(key + ": " + wordFrequencies.get(key));}*/
-  }
+    }
 
 
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-  @Test
-  /**This test case confirms that if the null string in entered
-   * as input the correct handling occurs.
-   */
-  public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
-    // arrange
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage(equalTo("The string cannot be null!"));
-    // act
-    wordFrequency.getWordFrequency(null);
-  }
+    @Test
+    /**This test case confirms that if the null string in entered
+     * as input the correct handling occurs.
+     */
+    public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("The string cannot be null!"));
+        // act
+        wordFrequency.getWordFrequency(null);
+    }
 
-  @Test
-  /**This test case confirms that if the empty string in entered
-   * as input the correct handling occurs.
-   */
-  public void throwsIllegalArgumentExceptionWhenEmptyStringIsGiven() {
-    // arrange
-    thrown.expect(IllegalArgumentException.class);
-    String input = "";
-    thrown.expectMessage(equalTo("String cannot be empty"));
-    // act
-    wordFrequency.getWordFrequency(input);
-  }
+    @Test
+    /**This test case confirms that if the empty string in entered
+     * as input the correct handling occurs.
+     */
+    public void throwsIllegalArgumentExceptionWhenEmptyStringIsGiven() {
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        String input = "";
+        thrown.expectMessage(equalTo("String cannot be empty"));
+        // act
+        wordFrequency.getWordFrequency(input);
+    }
 
-  @Test
-  /**This test case confirms that if the null Dictionary is entered
-   * as input the correct handling occurs.
-   */
-  public void throwsIllegalArgumentExceptionWhenNullDictionaryIsGiven() {
-    // arrange
-    thrown.expect(IllegalArgumentException.class);
-    thrown.expectMessage(equalTo("The Dictionary cannot be null!"));
-    // act
-    WordFrequency wordFrequency = new WordFrequency(null);
+    @Test
+    /**This test case confirms that if the null Dictionary is entered
+     * as input the correct handling occurs.
+     */
+    public void throwsIllegalArgumentExceptionWhenNullDictionaryIsGiven() {
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("The Dictionary cannot be null!"));
+        // act
+        WordFrequency wordFrequency = new WordFrequency(null);
 
-  }
+    }
 }
