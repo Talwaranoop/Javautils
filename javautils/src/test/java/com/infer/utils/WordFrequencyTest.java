@@ -5,9 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -33,7 +31,7 @@ public class WordFrequencyTest {
         dictionary.add("Apple");
         dictionary.add("Samsung");
         dictionary.add("Samsung galaxy");
-        dictionary.add("Tesla");
+        dictionary.add("Tesla motors");
         dictionary.add("Exxon");
         dictionary.add("Vioin");
         dictionary.add("Google");
@@ -50,7 +48,8 @@ public class WordFrequencyTest {
     public void shouldCountDictionaryWordsInSentences() {
         Set<String> wordFrequencies = new HashSet<>();
         wordFrequencies.add("Apple iphone has out numbered Samsung galaxy");
-        wordFrequencies.add("Tesla and Google are showcasing their self driving cars Samsung");
+        wordFrequencies.add("Tesla motors and Google are showcasing their self driving cars Samsung");
+        wordFrequencies.add("BMW buys engine from Tesla motors");
         wordFrequencies.add("Can Microsoft take a lead on Google Android");
         wordFrequencies.add("Google may acquire Twitter");
 
