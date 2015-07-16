@@ -32,6 +32,7 @@ public class EntityDictionary implements Dictionary {
             throw new IllegalArgumentException("The string cannot be null!");
         if (str.isEmpty())
             throw new IllegalArgumentException("String cannot be empty");
+        str = str.toLowerCase();
         dictionaryWords.add(str);//getWordFrequency elements to HashSet
 
     }

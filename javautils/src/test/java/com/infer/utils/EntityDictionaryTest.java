@@ -14,7 +14,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * The EntityDictionaryTest program checks the various conditions
  * through different test cases to make sure that for different
  * inputs, the correct expected outputs or actions happen.
- * <p>
+ *
  * Also,it makes sure that for bad inputs, correct handling
  * occurs and the expected outputs or actions still happen.
  *
@@ -24,17 +24,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class EntityDictionaryTest {
     private EntityDictionary obj;
+
     @Before
     public void executedBeforeEach() {
         obj = new EntityDictionary();
     }
-@Test
-public void showDictionary(){
-    obj.add("anoop");
-    obj.add("amit");
-    obj.add("shamini morgan");
-System.out.println(obj.getWords());
-}
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 

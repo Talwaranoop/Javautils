@@ -11,21 +11,19 @@ import java.util.*;
  * @since 6/19/2015.
  */
 public class WordFrequency {
-    public Collection<String> diction = new HashSet<>();
+    private Collection<String> dictionaryWords = new HashSet<>();
 
-    public WordFrequency(EntityDictionary dict) throws IllegalArgumentException {//object of EntityDictionary class passed as constructor argument.
-        if (dict == null)
+    public WordFrequency(EntityDictionary entityDictionaryWords) throws IllegalArgumentException {//object of EntityDictionary class passed as constructor argument.
+        if (entityDictionaryWords == null)
             throw new IllegalArgumentException("The Dictionary cannot be null!");
-        if (dict.contains(""))
-            throw new IllegalArgumentException("Dictionary cannot be empty");
-        diction = dict.getWords();//copies all the words present in the EntityDictionary set to the diction set.
+        dictionaryWords = entityDictionaryWords.getWords();//copies all the words present in the EntityDictionary set to the dictionaryWords set.
     }
 
     /**
-     * This method adds the Sentence to the Dictionary.
-     *
-     * @param sentence : This parameter has been used to
-     *                 getWordFrequency Sentence to the Dictionary.
+     * This method iterates over the sentences given as input
+     * and counts the frequency of Dictionary words and puts
+     * it in the map.
+     * @param sentence : This parameter has been used to give sentence as an input.
      */
 
         /* A function will be written to make the combinations of the words and will be put in the map*/
@@ -34,11 +32,12 @@ public class WordFrequency {
             throw new IllegalArgumentException("The string cannot be null!");
         if (sentence.isEmpty())
             throw new IllegalArgumentException("String cannot be empty");
+        sentence = sentence.toLowerCase();
         String[] words = sentence.split("\\s+"); // Splits the line on White Space.
         Map<String, Integer> wordToCount = new HashMap<>();
 
         for (String word : words) {
-            if (!diction.contains(word)) {
+            if (!dictionaryWords.contains(word)) {
                 continue;
             }
             if (wordToCount.containsKey(word)) {
@@ -49,18 +48,20 @@ public class WordFrequency {
             }
         }
 
-            for (int i=0;i<words.length-1;i++) {// "i" is the index of the words array.
-                if (!diction.contains(words[i]+""+" "+words[i+1])) {
-                    continue;
-                }
-                if (wordToCount.containsKey(words[i]+""+" "+words[i+1])) {
-                    Integer val2 = wordToCount.get(words[i]+""+" "+words[i+1]);
-                    wordToCount.put(words[i]+""+" "+words[i+1], val2 + 1);
-                }else {
-                    wordToCount.put(words[i]+""+" "+words[i+1],1);
+        for (int i = 0; i < words.length - 1; i++) {// "i" is the index of the words array.
+            for (int j = i + 1; j < words.length; j++) {
+                words[i] = words[i] + "" + " " + words[j];
+                if (dictionaryWords.contains(words[i])) {
+                    if (wordToCount.containsKey(words[i])) {
+                        Integer value = wordToCount.get(words[i]);
+                        wordToCount.put(words[i], value + 1);// increases the count of the word.
+                    } else {
+                        wordToCount.put(words[i], 1);
+                    }
                 }
             }
-        List<String> Combinations ;
+        }
+        List<String> Combinations;
         Combinations = Strings.getAllCombination(wordToCount.keySet());//gets the combinations of dictionary words present in the sentence.
         for (String s : Combinations) {
             wordToCount.put(s, 1);

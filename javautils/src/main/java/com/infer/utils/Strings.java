@@ -151,13 +151,18 @@ public class Strings {
         }
     }
 
+    /**
+     * This method makes combinations of words given in Hash set as input.
+     * @param wordSet : This parameter contains all the words.
+     * @return        : This is used to return the combinations to the WordFrequency class.
+     */
     public static List<String> getAllCombination(Set<String> wordSet) {
         List<String> words = new ArrayList<>();
         if (wordSet == null)
             throw new IllegalArgumentException("wordSet cannot be null");
         if (wordSet.contains(""))
             throw new IllegalArgumentException("wordSet cannot be empty");
-        words.addAll(wordSet);
+        words.addAll(wordSet);// copies all the words in list "words".
 
         List<String> result = new ArrayList<>();
         int n = words.size();// number of words in the list.
