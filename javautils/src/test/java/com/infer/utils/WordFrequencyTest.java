@@ -17,7 +17,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  * The WordFrequencyTest program checks the various conditions
  * through different test cases to make sure that for different
  * inputs, the correct expected outputs or actions happen.
- *
+ * <p>
  * Also,it makes sure that for bad inputs, correct handling
  * occurs and the expected outputs or actions still happen.
  *
@@ -32,15 +32,15 @@ public class WordFrequencyTest {
     public void executedBeforeEach() {
         EntityDictionary dictionary = new EntityDictionary();
         dictionary.add("Apple");
-        //dictionary.add("Samsung");
-        dictionary.add("Samsung galaxy ace");
+        dictionary.add("Samsung galaxy ace pvt ltd");
+        dictionary.add("Samsun galaxy ace");
+        dictionary.add("Samsung");
         dictionary.add("Tesla motors");
         dictionary.add("Exxon");
         dictionary.add("Vioin");
         dictionary.add("Google");
         dictionary.add("Twitter");
         dictionary.add("Microsoft");
-
         wordFrequency = new WordFrequency(dictionary);
     }
 
@@ -50,19 +50,19 @@ public class WordFrequencyTest {
      */
     public void shouldCountDictionaryWordsInSentences() {
         Set<String> wordFrequencies = new HashSet<>();
-        wordFrequencies.add("Apple iphone has out numbered Samsung galaxy ace");
+        wordFrequencies.add("Apple iphone has out numbered Samsung galaxy ace pvt ltd");
         // wordFrequencies.add("Tesla motors ltd and Google are showcasing their self driving cars Samsung");
         // wordFrequencies.add("BMW buys engine from Tesla motors");
         //wordFrequencies.add("Can Microsoft take a lead on Google Android");
         //wordFrequencies.add("Google may acquire Twitter");
         Map<Object, Object> combinations = new HashMap<>();
-        combinations.put("apple,samsung galaxy ace",1);
         combinations.put("apple", 1);
-        combinations.put("samsung galaxy ace",1);
+        combinations.put("samsung galaxy ace pvt ltd", 1);
+        combinations.put("apple,samsung galaxy ace pvt ltd", 1);
         Map result;
         result = wordFrequency.getGlobalWordFrequency(wordFrequencies);
-        Assert.assertEquals(result,combinations);
-        System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
+        Assert.assertEquals(result, combinations);
+        //System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
     }
 
 

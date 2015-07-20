@@ -1,6 +1,7 @@
 package com.infer.utils;
 
 import java.util.*;
+import java.util.List;
 
 /**
  * The WordFrequency program implements an application that
@@ -23,10 +24,9 @@ public class WordFrequency {
      * This method iterates over the sentences given as input
      * and counts the frequency of Dictionary words and puts
      * it in the map.
+     *
      * @param sentence : This parameter has been used to give sentence as an input.
      */
-
-        /* A function will be written to make the combinations of the words and will be put in the map*/
     public Map<String, Integer> getWordFrequency(String sentence) throws IllegalArgumentException {
         if (sentence == null)
             throw new IllegalArgumentException("The string cannot be null!");
@@ -35,32 +35,32 @@ public class WordFrequency {
         sentence = sentence.toLowerCase();
         String[] words = sentence.split("\\s+"); // Splits the line on White Space.
         Map<String, Integer> wordToCount = new HashMap<>();
+        String[] storeDuplicateWords;
+        storeDuplicateWords = words.clone();
+        String[] checkFinalWord = words.clone();
+        for (int i = 0; i < words.length; i++) {// "i" is the index of the words array.
+            if (dictionaryWords.contains(words[i])) {
+                checkFinalWord[i] = words[i];
+                int k = i + 1;
+                while (k < storeDuplicateWords.length) {
+                    storeDuplicateWords[i] = storeDuplicateWords[i] + " " + storeDuplicateWords[k];
+                    if (dictionaryWords.contains(storeDuplicateWords[i])) {
+                        checkFinalWord[i] = storeDuplicateWords[i];
+                        k++;
 
-        for (String word : words) {
-            if (!dictionaryWords.contains(word)) {
-                continue;
-            }
-            if (wordToCount.containsKey(word)) {
-                Integer val = wordToCount.get(word);
-                wordToCount.put(word, val + 1);// increases the count value of the word.
-            } else {
-                wordToCount.put(word, 1);
-            }
-        }
+                    } else
+                        k++;
 
-        for (int i = 0; i < words.length - 1; i++) {// "i" is the index of the words array.
-            for (int j = i + 1; j < words.length; j++) {
-                words[i] = words[i] + "" + " " + words[j];
-                if (dictionaryWords.contains(words[i])) {
-                    if (wordToCount.containsKey(words[i])) {
-                        Integer value = wordToCount.get(words[i]);
-                        wordToCount.put(words[i], value + 1);// increases the count of the word.
-                    } else {
-                        wordToCount.put(words[i], 1);
-                    }
+                }
+                if (wordToCount.containsKey(checkFinalWord[i])) {
+                    Integer value1 = wordToCount.get(checkFinalWord[i]);
+                    wordToCount.put(checkFinalWord[i], value1 + 1);// increases the count of the word.
+                } else {
+                    wordToCount.put(checkFinalWord[i], 1);
                 }
             }
         }
+
         List<String> Combinations;
         Combinations = Strings.getAllCombination(wordToCount.keySet());//gets the combinations of dictionary words present in the sentence.
         for (String s : Combinations) {
