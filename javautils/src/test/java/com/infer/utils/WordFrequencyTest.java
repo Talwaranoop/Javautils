@@ -54,7 +54,7 @@ public class WordFrequencyTest {
     public void shouldCountDictionaryWordsInSentences() {
         Set<String> wordFrequencies = new HashSet<>();
         //wordFrequencies.add("Apple iphone has out numbered Samsung galaxy ace pvt ltd");
-        wordFrequencies.add("Tesla motors ltd and tesla Google are showcasing their self driving cars Samsung");
+        wordFrequencies.add("Tesla motors ltd and  Google are showcasing their self driving cars Samsung");
         // wordFrequencies.add("BMW buys engine from Tesla motors");
         //wordFrequencies.add("Can Microsoft take a lead on Google Android");
         //wordFrequencies.add("Google may acquire Twitter");
