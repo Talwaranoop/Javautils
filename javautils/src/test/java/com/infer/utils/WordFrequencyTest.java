@@ -32,15 +32,18 @@ public class WordFrequencyTest {
     public void executedBeforeEach() {
         EntityDictionary dictionary = new EntityDictionary();
         dictionary.add("Apple");
-        dictionary.add("Samsung galaxy ace pvt ltd");
-        dictionary.add("Samsun galaxy ace");
         dictionary.add("Samsung");
+        dictionary.add("Samsung electronics ltd");
+        dictionary.add("Tesla");
         dictionary.add("Tesla motors");
         dictionary.add("Exxon");
         dictionary.add("Vioin");
+        dictionary.add("Vioin Memory");
         dictionary.add("Google");
+        dictionary.add("Google Inc");
         dictionary.add("Twitter");
         dictionary.add("Microsoft");
+        dictionary.add("BMW");
         wordFrequency = new WordFrequency(dictionary);
     }
 
@@ -50,19 +53,19 @@ public class WordFrequencyTest {
      */
     public void shouldCountDictionaryWordsInSentences() {
         Set<String> wordFrequencies = new HashSet<>();
-        wordFrequencies.add("Apple iphone has out numbered Samsung galaxy ace pvt ltd");
-        // wordFrequencies.add("Tesla motors ltd and Google are showcasing their self driving cars Samsung");
+        //wordFrequencies.add("Apple iphone has out numbered Samsung galaxy ace pvt ltd");
+        wordFrequencies.add("Tesla motors ltd and tesla Google are showcasing their self driving cars Samsung");
         // wordFrequencies.add("BMW buys engine from Tesla motors");
         //wordFrequencies.add("Can Microsoft take a lead on Google Android");
         //wordFrequencies.add("Google may acquire Twitter");
-        Map<Object, Object> combinations = new HashMap<>();
-        combinations.put("apple", 1);
-        combinations.put("samsung galaxy ace pvt ltd", 1);
-        combinations.put("apple,samsung galaxy ace pvt ltd", 1);
-        Map result;
-        result = wordFrequency.getGlobalWordFrequency(wordFrequencies);
-        Assert.assertEquals(result, combinations);
-        //System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
+       // Map<Object, Object> combinations = new HashMap<>();
+        //combinations.put("apple", 1);
+        //combinations.put("samsung galaxy ace pvt ltd", 1);
+        //combinations.put("apple,samsung galaxy ace pvt ltd", 1);
+       // Map result;
+       // result = wordFrequency.getGlobalWordFrequency(wordFrequencies);
+        //Assert.assertEquals(result, combinations);
+        System.out.println(wordFrequency.getGlobalWordFrequency(wordFrequencies));
     }
 
 

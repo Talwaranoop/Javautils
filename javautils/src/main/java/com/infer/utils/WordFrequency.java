@@ -58,6 +58,26 @@ public class WordFrequency {
                 } else {
                     wordToCount.put(checkFinalWord[i], 1);
                 }
+            } else {
+                int k = i + 1;
+                while (k < storeDuplicateWords.length) {
+                    storeDuplicateWords[i] = storeDuplicateWords[i] + " " + storeDuplicateWords[k];
+                    if (dictionaryWords.contains(storeDuplicateWords[i])) {
+                        checkFinalWord[i] = storeDuplicateWords[i];
+                        k++;
+                    }
+                    else
+                        k++;
+
+                }
+                if (dictionaryWords.contains(checkFinalWord[i])) {
+                    if (wordToCount.containsKey(checkFinalWord[i])) {
+                        Integer value1 = wordToCount.get(checkFinalWord[i]);
+                        wordToCount.put(checkFinalWord[i], value1 + 1);// increases the count of the word.
+                    } else {
+                        wordToCount.put(checkFinalWord[i], 1);
+                    }
+                }
             }
         }
 
