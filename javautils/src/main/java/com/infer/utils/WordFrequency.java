@@ -90,11 +90,10 @@ public class WordFrequency {
     }
 
     public Map<String, Integer> getGlobalWordFrequency(Collection<String> sentences) {
-        Map<String, Integer> FinalMap;
         Map<String, Integer> finalCount = new HashMap<>();
         for (String sentence : sentences) {
-            FinalMap = getWordFrequency(sentence);
-            for (String s : FinalMap.keySet()) {
+            Map<String, Integer> finalMap = getWordFrequency(sentence);
+            for (String s : finalMap.keySet()) {
                 if (finalCount.containsKey(s)) {
                     Integer val = finalCount.get(s);
                     finalCount.put(s, val + 1);// increases the count value of the word.

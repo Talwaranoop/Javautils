@@ -73,12 +73,6 @@ public class WordFrequencyTest {
     expected.put("microsoft", 1);
     expected.put("bmw", 1);
     expected.put("tesla motors,bmw", 1);
-
-    // TODO (VP): Fix missing entries in the actual result
-    expected.put("tesla", 1);
-    expected.put("google,tesla", 1);
-    expected.put("bmw,tesla", 1);
-
     Map<String, Integer> actual = wordFrequency.getGlobalWordFrequency(wordFrequencies);
     System.out.println(actual);
 
