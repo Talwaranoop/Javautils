@@ -14,19 +14,24 @@ public class TermVector {
     public int totalWords;
     private Map<String, Integer> wordFrequency = new LinkedHashMap<>();
 
-    TermVector(String text) throws IllegalArgumentException {
+    TermVector(String text) throws IllegalArgumentException {//Text is passed as constructor argument.
         if (text == null) {
             throw new IllegalArgumentException("String cannot be null");
         }
         if (text.isEmpty()) {
             throw new IllegalArgumentException("String cannot be empty");
         }
-        sentence = text;
+        sentence = text;//copies the text to sentence.
         sentence = sentence.toLowerCase();
     }
 
+    /**
+     * This method iterates over the sentence given as input
+     * and counts the frequency of words and puts
+     * it in the map.
+     **/
     public void countWordFrequency() {
-        String[] words = sentence.split("\\s+");
+        String[] words = sentence.split("\\s+");// Splits the line on White Space.
         totalWords = words.length;
         for (String word : words) {
             if (wordFrequency.containsKey(word)) {
@@ -39,16 +44,22 @@ public class TermVector {
 
     }
 
+    /**
+     * This method gives the probability of each word present in the sentence.
+     **/
     public List<Double> getVector() {
         List<Double> probability = new ArrayList<>();
         for (String s : wordFrequency.keySet()) {
             Integer value = wordFrequency.get(s);
-            double var = (double) (value) / (double) (totalWords);
-            probability.add(var);
+            double probabilityOfWord = (double) (value) / (double) (totalWords);
+            probability.add(probabilityOfWord);
         }
         return probability;
     }
 
+    /**
+     * This method gives the probability of a word being picked up, if randomly chosen.
+     **/
     public double getScore(String term) {
         term = term.toLowerCase();
         Integer value = wordFrequency.get(term);
