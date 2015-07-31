@@ -65,8 +65,7 @@ public class WordFrequency {
                     if (dictionaryWords.contains(storeDuplicateWords[i])) {
                         checkFinalWord[i] = storeDuplicateWords[i];
                         k++;
-                    }
-                    else
+                    } else
                         k++;
 
                 }

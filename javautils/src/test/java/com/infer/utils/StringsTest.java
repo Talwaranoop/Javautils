@@ -53,7 +53,7 @@ public class StringsTest {
 
     @Test
     /**This test case checks if the string gets converted to Lowercase
-     from the given start to end indices using byte.
+(     from the given start to end indices using byte.
      */
     public void shouldConvertBytesToLowerCaseFromStartToEndIndices() {
         String testCase = "THIS IS A TEST";//string to be LowerCased.
@@ -112,7 +112,7 @@ public class StringsTest {
     public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(equalTo("The string cannot be null!"));
+        thrown.expectMessage(equalTo("String cannot be null"));
         // act
         int start = 1;
         int len = 2;

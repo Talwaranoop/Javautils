@@ -26,11 +26,11 @@ public class TermVectorTest {
     private TermVector termVector = new TermVector("Apple is awesome Apple is great");
 
     /**
-     * This Test case gives the probability of each word present in the sentence.
-     */
+     * This Test case  Computes probability of occurrence of a certain word as
+     * (number of times the word occurs / total number of words).
+     **/
     @Test
     public void getProbability() {
-        termVector.countWordFrequency();
         List<Double> actual = termVector.getVector();
         List<Double> expected = new ArrayList<>();
         expected.add(0.3333333333333333);
@@ -48,11 +48,10 @@ public class TermVectorTest {
      */
     @Test
     public void getTermProbability() {
-        termVector.countWordFrequency();
-        double actual = termVector.getScore("apple");
+        double actual = termVector.getScore("Apple");
         double expected = 0.3333333333333333;
         Assert.assertEquals(expected, actual, 0.3333333333333333);
-
+        //System.out.println(actual);
     }
 
     @Rule

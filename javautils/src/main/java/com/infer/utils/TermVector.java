@@ -11,43 +11,23 @@ import java.util.*;
  */
 public class TermVector {
     public String sentence;
-    public int totalWords;
+    private int totalWords;
     private Map<String, Integer> wordFrequency = new LinkedHashMap<>();
 
     TermVector(String text) throws IllegalArgumentException {//Text is passed as constructor argument.
-        if (text == null) {
-            throw new IllegalArgumentException("String cannot be null");
-        }
-        if (text.isEmpty()) {
-            throw new IllegalArgumentException("String cannot be empty");
-        }
-        sentence = text;//copies the text to sentence.
-        sentence = sentence.toLowerCase();
+        StringChecks.checkEmptyAndNullConditions(text);
+        sentence = text.toLowerCase();
     }
 
     /**
-     * This method iterates over the sentence given as input
-     * and counts the frequency of words and puts
-     * it in the map.
-     **/
-    public void countWordFrequency() {
-        String[] words = sentence.split("\\s+");// Splits the line on White Space.
-        totalWords = words.length;
-        for (String word : words) {
-            if (wordFrequency.containsKey(word)) {
-                Integer value = wordFrequency.get(word);
-                wordFrequency.put(word, value + 1);
-            } else {
-                wordFrequency.put(word, 1);
-            }
-        }
-
-    }
-
-    /**
-     * This method gives the probability of each word present in the sentence.
+     * This method Computes probability of occurrence of a certain word as
+     * (number of times the word occurs / total number of words).
+     *
+     * @return :This is used to return probability of the occurrence of all the words in the sentence.
      **/
     public List<Double> getVector() {
+        wordFrequency = Strings.countWordFrequency(sentence);
+        totalWords = Strings.countNumberOfWordsInSentence(sentence);
         List<Double> probability = new ArrayList<>();
         for (String s : wordFrequency.keySet()) {
             Integer value = wordFrequency.get(s);
@@ -59,9 +39,14 @@ public class TermVector {
 
     /**
      * This method gives the probability of a word being picked up, if randomly chosen.
+     *
+     * @param term :This parameter has been used to give word as an input.
+     * @return :This is used to return probability of the occurrence of the word.
      **/
     public double getScore(String term) {
         term = term.toLowerCase();
+        totalWords = Strings.countNumberOfWordsInSentence(sentence);
+        wordFrequency = Strings.countWordFrequency(sentence);
         Integer value = wordFrequency.get(term);
         return (double) (value) / (double) (totalWords);
     }

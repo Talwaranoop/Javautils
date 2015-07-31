@@ -34,9 +34,7 @@ public class Strings {
      */
 
     public static String toLowerCase(String s, int start, int len) throws IllegalArgumentException {
-
-        if (s == null)
-            throw new IllegalArgumentException("The string cannot be null!");
+        StringChecks.checkEmptyAndNullConditions(s);
         if (s.matches(".*[^ A-Za-z0-9].*"))//Regular expression for matching special characters.
             throw new IllegalArgumentException("String cannot contain special characters");
         char[] charArray = s.toCharArray();//Stores sting in array
@@ -44,8 +42,6 @@ public class Strings {
             throw new IllegalArgumentException("The argument " + start + "cannot be negative");
         if (len < 0)
             throw new IllegalArgumentException("The argument " + len + "cannot be negative");
-        if (s.isEmpty())
-            throw new IllegalArgumentException("String cannot be empty");
         for (int i = start; i < start + len; i++) {
             if (Character.isUpperCase(charArray[i])) {
                 charArray[i] = Character.toLowerCase(charArray[i]);
@@ -65,15 +61,12 @@ public class Strings {
      * @return This returns the converted UpperCased string.
      */
     public static String toUpperCase(String s, int start, int len) throws IllegalArgumentException {
-        if (s == null)
-            throw new IllegalArgumentException("The string cannot be null!");
+        StringChecks.checkEmptyAndNullConditions(s);
         char[] charArray = s.toCharArray();
         if (start < 0)
             throw new IllegalArgumentException("The argument " + start + "cannot be negative");
         if (len <= 0)
             throw new IllegalArgumentException("The argument " + len + "cannot be zero or negative");
-        if (s.isEmpty())
-            throw new IllegalArgumentException("String cannot be empty");
         for (int i = start; i < start + len; i++) {
             if (Character.isLowerCase(charArray[i])) {
                 charArray[i] = Character.toUpperCase(charArray[i]);
@@ -153,8 +146,9 @@ public class Strings {
 
     /**
      * This method makes combinations of words given in Hash set as input.
+     *
      * @param wordSet : This parameter contains all the words.
-     * @return        : This is used to return the combinations to the WordFrequency class.
+     * @return : This is used to return the combinations to the WordFrequency class.
      */
     public static List<String> getAllCombination(Set<String> wordSet) {
         List<String> words = new ArrayList<>();
@@ -203,4 +197,27 @@ public class Strings {
 
     }
 
+    /**
+     * This method iterates over the sentence given as input and
+     * tokenize the sentence on whitespace and counts number
+     * of times each word appears.
+     **/
+    public static Map<String, Integer> countWordFrequency(String sentence) {
+        Map<String, Integer> wordFrequency = new LinkedHashMap<>();
+        String[] words = sentence.split("\\s+");// Splits the line on White Space.
+        for (String word : words) {
+            if (wordFrequency.containsKey(word)) {
+                Integer value = wordFrequency.get(word);
+                wordFrequency.put(word, value + 1);
+            } else {
+                wordFrequency.put(word, 1);
+            }
+        }
+        return wordFrequency;
+    }
+
+    public static int countNumberOfWordsInSentence(String sentence) {
+        String[] words = sentence.split("\\s+");// Splits the line on White Space.
+        return words.length;
+    }
 }
