@@ -23,7 +23,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
  */
 
 public class TermVectorTest {
-    private TermVector termVector = new TermVector("Apple is awesome Apple is great");
+    private TermVector termVector = new TermVector("Apple is awesome Apple is great",2);
 
     /**
      * This Test case  Computes probability of occurrence of a certain word as
@@ -33,14 +33,22 @@ public class TermVectorTest {
     public void getProbability() {
         List<Double> actual = termVector.getVector();
         List<Double> expected = new ArrayList<>();
-        expected.add(0.3333333333333333);
-        expected.add(0.3333333333333333);
-        expected.add(0.16666666666666666);
-        expected.add(0.16666666666666666);
-        // Test Assertion : actual and expected must be of same size.
+        expected.add(0.2);
+        expected.add(0.06666666666666667);
+        expected.add(0.06666666666666667);
+        expected.add(0.13333333333333333);
+        expected.add(0.06666666666666667);
+        expected.add(0.06666666666666667);
+        expected.add(0.06666666666666667);
+        expected.add(0.13333333333333333);
+        expected.add(0.06666666666666667);
+        expected.add(0.06666666666666667);
+        expected.add(0.06666666666666667);
+
+        //Test Assertion : actual and expected must be of same size.
         Assert.assertEquals(expected.size(), actual.size());
         Assert.assertEquals(expected, actual);
-
+        System.out.println(actual);
     }
 
     /**
@@ -48,38 +56,63 @@ public class TermVectorTest {
      */
     @Test
     public void getTermProbability() {
-        double actual = termVector.getScore("Apple");
-        double expected = 0.3333333333333333;
-        Assert.assertEquals(expected, actual, 0.3333333333333333);
-        //System.out.println(actual);
+        double actual = termVector.getScore("Apple,is");
+       // System.out.println(actual);
+        double expected= 0.2;
+        Assert.assertEquals(expected, actual,0.0);
+
     }
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     /**
-     * This test case confirms that if the null string is entered
+     * This test case confirms that if the null sentence is entered
      * as input the correct handling occurs.
      */
     @Test
-    public void throwsIllegalArgumentExceptionWhenNullStringIsGiven() {
+    public void throwsIllegalArgumentExceptionWhenNullSentenceIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("String cannot be null"));
         // act
-        termVector = new TermVector(null);
+        termVector = new TermVector(null,0);
     }
 
     /**
-     * This test case confirms that if the empty string in entered
+     * This test case confirms that if the empty sentence in entered
      * as input the correct handling occurs.
      */
     @Test
-    public void throwsIllegalArgumentExceptionWhenEmptyStringIsGiven() {
+    public void throwsIllegalArgumentExceptionWhenEmptySentenceIsGiven() {
         // arrange
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(equalTo("String cannot be empty"));
         // act
-        termVector = new TermVector("");
+        termVector = new TermVector("",0);
+    }
+    /**
+     * This test case confirms that if the empty Term is entered
+     * as input the correct handling occurs.
+     */
+    @Test
+    public void throwsIllegalArgumentExceptionWhenEmptyTermIsGiven() {
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("String cannot be empty"));
+        // act
+        termVector.getScore("");
+    }
+    /**
+     * This test case confirms that if the null term is entered
+     * as input the correct handling occurs.
+     */
+    @Test
+    public void throwsIllegalArgumentExceptionWhenNullTermIsGiven() {
+        // arrange
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage(equalTo("String cannot be null"));
+        // act
+        termVector.getScore(null);
     }
 }

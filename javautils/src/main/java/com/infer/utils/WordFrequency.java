@@ -26,6 +26,8 @@ public class WordFrequency {
      * it in the map.
      *
      * @param sentence : This parameter has been used to give sentence as an input.
+     * @return : It returns the frequency of words(and their combinations)occurring in the
+     * sentence that are present in dictionary .
      */
     public Map<String, Integer> getWordFrequency(String sentence) throws IllegalArgumentException {
         if (sentence == null)
@@ -88,6 +90,15 @@ public class WordFrequency {
         return wordToCount;
     }
 
+    /**
+     * This method Adds/Updates count of combinations in a global HashMap
+     * which will contain the tokens and their counts from all
+     * the sentence HashMap and combination sets.
+     *
+     * @param sentences: This parameter has been used to give set of sentences as an input
+     * @return : It returns the frequency of words(and their combinations)occurring in the
+     * sentences that are present in dictionary .
+     */
     public Map<String, Integer> getGlobalWordFrequency(Collection<String> sentences) {
         Map<String, Integer> finalCount = new HashMap<>();
         for (String sentence : sentences) {

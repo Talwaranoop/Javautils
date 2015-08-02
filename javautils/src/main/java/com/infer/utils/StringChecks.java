@@ -1,7 +1,8 @@
 package com.infer.utils;
 
 /**
- * Created by Anoop on 7/30/2015.
+ * @author Anoop
+ * @since 7/30/2015.
  */
 public class StringChecks {
 

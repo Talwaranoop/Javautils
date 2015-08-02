@@ -74,7 +74,7 @@ public class WordFrequencyTest {
         expected.put("bmw", 1);
         expected.put("tesla motors,bmw", 1);
         Map<String, Integer> actual = wordFrequency.getGlobalWordFrequency(wordFrequencies);
-        System.out.println(actual);
+
 
         // Test Assertion 1: actual and expected must be of same size
         Assert.assertEquals(expected.size(), actual.size());
